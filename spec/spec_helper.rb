@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "psm_dead_simple_deployment_tools"
+Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

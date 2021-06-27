@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require "fileutils"
 
 require_relative "psm_dead_simple_deployment_tools/version"
 require_relative "psm_dead_simple_deployment_tools/files"
