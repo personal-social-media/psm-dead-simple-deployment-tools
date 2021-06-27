@@ -22,7 +22,55 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Files
+
+```ruby
+include PsmDeadSimpleDeploymentTools::Files
+
+# writing a file once
+write("file_path") do # supports write("file_path", "template_path.erb") 
+  "new content"
+end
+
+# appending to a file once
+append("file_path") do # supports append("file_path", "template_path.erb") 
+  "appended content"
+end
+
+# find and replace content from file
+# match can be a String or Regexp
+replace("file_path", /my-match/) do # supports replace("file_path", /my-match/, "template_path.erb") 
+  "replaced content"
+end
+```
+
+#### How to use template.erb
+
+```ruby
+# inside app.rb
+
+def write_my_config_file
+  @hostname = `hostname`
+  write("tmp/my-hostname", "my_template_file.erb")
+end
+```
+
+```text
+# inside my_template_file
+my hostname is: <%= @hostname %>
+```
+
+### Packages
+```ruby
+#only apt support currently
+include PsmDeadSimpleDeploymentTools::Packages
+
+# updates package repo and installs packages
+install_packages("vim", "libpq-dev")
+
+# removes packages
+remove_packages("vim", "libpq-dev")
+```
 
 ## Development
 
@@ -32,7 +80,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/psm_dead_simple_deployment_tools. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/psm_dead_simple_deployment_tools/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/personal-social-media/psm_dead_simple_deployment_tools. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/psm_dead_simple_deployment_tools/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
