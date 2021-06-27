@@ -13,4 +13,6 @@ jobs:
         ruby-version: 3.0.1
         bundler-cache: true
     - name: Run the default task
+      env:
+        CI: true
       run: bundle exec rake
